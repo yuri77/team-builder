@@ -1,42 +1,33 @@
 import React, { useState } from "react";
 
 function Form() {
-  const [user, setUser] = useState({ username: "", password: "", email: "" });
+  const [user, setUser] = useState({ name: "", email: "", role: "" });
 
   function handleChange(event) {
     const updatedUser = { ...user, [event.target.name]: event.target.value };
-    console.log(
-      "handleChange",
-      event.target.name,
-      event.target.value,
-      updatedUser
-    );
+
     setUser(updatedUser);
   }
-  // function handleEmail(event) {
-  //   console.log("changed Email", event.target.value);
-  //   setUser({ email: event.target.value });
-  // }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("username", user);
+    console.log("user", user);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Signup</legend>
+        <legend>Tell us about yourself</legend>
         <div className="form-group row">
-          <label for="username" className="col-sm-2 col-form-label">
-            Username
+          <label for="name" className="col-sm-2 col-form-label">
+            Name
             <div className="col-sm-10">
               <input
                 type="text"
                 className="form-control"
-                name="username"
+                name="name"
                 placeholder="Enter your username"
-                value={user.username}
+                value={user.name}
                 onChange={handleChange}
               />
             </div>
@@ -55,14 +46,14 @@ function Form() {
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label for="exampleInputPassword1">Role</label>
           <input
-            type="password"
+            type="text"
             className="form-control"
-            name="password"
-            placeholder="Password"
+            name="role"
+            placeholder="Your Role ex.backend developer"
             onChange={handleChange}
-            value={user.password}
+            value={user.role}
           />
         </div>
         <button type="submit" className="btn btn-primary">
