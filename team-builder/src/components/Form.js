@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
-function Form() {
+function Form(props) {
   const [user, setUser] = useState({ name: "", email: "", role: "" });
+  const [member, setMember] = useState({});
 
   function handleChange(event) {
     const updatedUser = { ...user, [event.target.name]: event.target.value };
-
     setUser(updatedUser);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("user", user);
+    props.Add(user);
+    console.log(user);
   }
 
   return (
